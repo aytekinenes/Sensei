@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "NS",
+			"Path": "..\\Source\\NS.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "NSEditor",
+			"Path": "..\\Source\\NSEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
