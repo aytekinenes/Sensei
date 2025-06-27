@@ -103,8 +103,24 @@ void ANSCharacter::BeginPlay()
 	if (IsValid(AbilitySystemComponent)) 
 	{
 		BaseActorAttributes = AbilitySystemComponent->GetSet<UBaseActorAttributes>();
+
+		/** Bind and event to listen to health value changes */
+		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(BaseActorAttributes->GetHealthAttribute()).AddUObject(this, &ANSCharacter::HealthChanged);
 	}
 }
+
+
+void ANSCharacter::HealthChanged(const FOnAttributeChangeData& Data)
+{
+	float Health = Data.NewValue;
+	UpdateHealth(Health);
+}
+
+void ANSCharacter::UpdateHealth_Implementation(const float NewHealth)
+{
+	
+}
+
 
 void ANSCharacter::Move(const FInputActionValue& Value)
 {
@@ -141,3 +157,4 @@ void ANSCharacter::Look(const FInputActionValue& Value)
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
 }
+

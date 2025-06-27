@@ -1,0 +1,14 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/Unreal Projects/2025/cplusplus/Sensei/Sensei/NS/Content/BP/Abilities/GE_DamageSword.uasset",
+				"D:/Unreal Projects/2025/cplusplus/Sensei/Sensei/NS/Content/BP/Abilities/GA_HitReactSword.uasset",
+				"D:/Unreal Projects/2025/cplusplus/Sensei/Sensei/NS/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset"
+			]
+		}
+	]
+}

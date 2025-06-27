@@ -62,6 +62,11 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
+	/** Callback function On Health value changed */
+	virtual void HealthChanged(const FOnAttributeChangeData& Data);
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Base Actor Attributes")
+	void UpdateHealth(const float NewHealth);
 
 protected:
 

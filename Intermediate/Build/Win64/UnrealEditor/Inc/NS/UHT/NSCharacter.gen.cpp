@@ -24,9 +24,75 @@ NS_API UClass* Z_Construct_UClass_UBaseActorAttributes_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NS();
 // End Cross Module References
 
+// Begin Class ANSCharacter Function UpdateHealth
+struct NSCharacter_eventUpdateHealth_Parms
+{
+	float NewHealth;
+};
+static const FName NAME_ANSCharacter_UpdateHealth = FName(TEXT("UpdateHealth"));
+void ANSCharacter::UpdateHealth(const float NewHealth)
+{
+	UFunction* Func = FindFunctionChecked(NAME_ANSCharacter_UpdateHealth);
+	if (!Func->GetOwnerClass()->HasAnyClassFlags(CLASS_Native))
+	{
+		NSCharacter_eventUpdateHealth_Parms Parms;
+		Parms.NewHealth=NewHealth;
+	ProcessEvent(Func,&Parms);
+	}
+	else
+	{
+		UpdateHealth_Implementation(NewHealth);
+	}
+}
+struct Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Base Actor Attributes" },
+		{ "ModuleRelativePath", "NSCharacter.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NewHealth_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_NewHealth;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::NewProp_NewHealth = { "NewHealth", nullptr, (EPropertyFlags)0x0010000000000082, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NSCharacter_eventUpdateHealth_Parms, NewHealth), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NewHealth_MetaData), NewProp_NewHealth_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::NewProp_NewHealth,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANSCharacter, nullptr, "UpdateHealth", nullptr, nullptr, Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::PropPointers), sizeof(NSCharacter_eventUpdateHealth_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080C00, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::Function_MetaDataParams) };
+static_assert(sizeof(NSCharacter_eventUpdateHealth_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ANSCharacter_UpdateHealth()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANSCharacter_UpdateHealth_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ANSCharacter::execUpdateHealth)
+{
+	P_GET_PROPERTY(FFloatProperty,Z_Param_NewHealth);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->UpdateHealth_Implementation(Z_Param_NewHealth);
+	P_NATIVE_END;
+}
+// End Class ANSCharacter Function UpdateHealth
+
 // Begin Class ANSCharacter
 void ANSCharacter::StaticRegisterNativesANSCharacter()
 {
+	UClass* Class = ANSCharacter::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "UpdateHealth", &ANSCharacter::execUpdateHealth },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ANSCharacter);
 UClass* Z_Construct_UClass_ANSCharacter_NoRegister()
@@ -137,6 +203,10 @@ struct Z_Construct_UClass_ANSCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_AbilitySystemComponent;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_ANSCharacter_UpdateHealth, "UpdateHealth" }, // 387336905
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ANSCharacter>::IsAbstract,
@@ -177,11 +247,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ANSCharacter_Statics::C
 	"Game",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_ANSCharacter_Statics::PropPointers,
 	InterfaceParams,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_ANSCharacter_Statics::PropPointers),
 	UE_ARRAY_COUNT(InterfaceParams),
 	0x008000A4u,
@@ -207,10 +277,10 @@ ANSCharacter::~ANSCharacter() {}
 struct Z_CompiledInDeferFile_FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANSCharacter, ANSCharacter::StaticClass, TEXT("ANSCharacter"), &Z_Registration_Info_UClass_ANSCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANSCharacter), 734769718U) },
+		{ Z_Construct_UClass_ANSCharacter, ANSCharacter::StaticClass, TEXT("ANSCharacter"), &Z_Registration_Info_UClass_ANSCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANSCharacter), 3970510464U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_3604120928(TEXT("/Script/NS"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_1892552840(TEXT("/Script/NS"),
 	Z_CompiledInDeferFile_FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

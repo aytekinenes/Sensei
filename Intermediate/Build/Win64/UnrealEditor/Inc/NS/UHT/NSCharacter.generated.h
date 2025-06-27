@@ -14,6 +14,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NS_NSCharacter_generated_h
 
+#define FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void UpdateHealth_Implementation(const float NewHealth); \
+	DECLARE_FUNCTION(execUpdateHealth);
+
+
+#define FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_CALLBACK_WRAPPERS
 #define FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesANSCharacter(); \
@@ -40,6 +46,8 @@ public: \
 #define FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_CALLBACK_WRAPPERS \
 	FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_INCLASS_NO_PURE_DECLS \
 	FID_Unreal_Projects_2025_cplusplus_Sensei_Sensei_NS_Source_NS_NSCharacter_h_23_ENHANCED_CONSTRUCTORS \
 private: \
